@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Note</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input, textarea { display: block; width: 50%; margin: 10px auto; }
+        button { padding: 10px; background: green; color: white; border: none; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>✏️ Edit Note</h2>
+
+    <form action="/edit/{{ note[0] }}" method="POST">
+        <input type="text" name="title" value="{{ note[1] }}" required>
+        <textarea name="content" required>{{ note[2] }}</textarea>
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <a href="/">⬅ Back to Notes</a>
+</body>
+</html>

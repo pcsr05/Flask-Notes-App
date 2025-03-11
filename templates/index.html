@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Notes App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        input, textarea { display: block; width: 50%; margin: 10px auto; }
+        button { padding: 10px; background: blue; color: white; border: none; margin-top: 10px; }
+        a { text-decoration: none; color: red; margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h2>📒 Notes App</h2>
+
+    <form action="/add" method="POST">
+        <input type="text" name="title" placeholder="Enter note title" required>
+        <textarea name="content" placeholder="Enter note content" required></textarea>
+        <button type="submit">Add Note</button>
+    </form>
+
+    <h3>📜 Saved Notes</h3>
+    <ul>
+        {% for note in notes %}
+            <li>
+                <strong>{{ note[1] }}</strong>: {{ note[2] }}
+                <a href="/edit/{{ note[0] }}">✏️ Edit</a>
+                <a href="/delete/{{ note[0] }}" onclick="return confirm('Are you sure?');">🗑️ Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
