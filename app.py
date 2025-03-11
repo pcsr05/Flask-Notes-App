@@ -8,11 +8,13 @@ app = Flask(__name__)
 # Function to connect to MySQL
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",         # Use your MySQL username
-        password="pcsr125", # Use your MySQL password
+        host="127.0.0.1",  # Use 127.0.0.1 instead of "localhost"
+        port=3306,         # Default MySQL port
+        user="root",
+        password="pcsr125",
         database="notes_db"
     )
+
 
 @app.route('/')
 def index():
@@ -67,3 +69,4 @@ if __name__ == '__main__':
 
     threading.Timer(1, open_browser).start()  # Open browser after 1 second
     app.run(debug=True)
+    
